@@ -1,0 +1,18 @@
+{
+  "name": "lyrics-snatcher",
+  "version": "1.0.0",
+  "description": "Module for getting lyrics using LRCLIB API",
+  "main": "index.js",
+  "keywords": [
+    "music",
+    "lyrics",
+    "api",
+    "commonjs"
+  ],
+  "author": "RENOMIZER",
+  "repository": "github:RENOMIZER/lyrics-snatcher",
+  "license": "MIT",
+  "dependencies": {
+    "node-fetch-commonjs": "^3.3.2"
+  }
+}
