@@ -17,17 +17,23 @@ const encodeRFC3986URI = (str) => {
  * @param {string} artist_name - The artist's name
  * @param {string} album_name - The album title
  * @param {string} duration - The song duration in seconds
- * @description Example: `let lrc = await getLyrics('The Man Who Sold the World', 'David Bowie', 'The Man Who Sold the World', '241')`
+ * @param {boolean} synced - The type of the lyrics
+ * @description Example: `let lrc = await getLyrics('The Man Who Sold the World', 'David Bowie', 'The Man Who Sold the World', '241', true)`
  * @returns {Promise<string>}
  */
-const getLyrics = async (track_name, artist_name, album_name, duration) => {
+const getLyrics = async (track_name, artist_name, album_name, duration, synced) => {
   let resp = await fetch(`https://lrclib.net/api/get?track_name=${encodeRFC3986URI(track_name)}&artist_name=${encodeRFC3986URI(artist_name)}&album_name=${encodeRFC3986URI(album_name)}&duration=${duration}`)
 
   if (resp.status == 200) {
     let body = await resp.json()
 
-    if (body.syncedLyrics) {
-      return body.syncedLyrics
+    if (synced) {
+      if (body.syncedLyrics) {
+        return body.syncedLyrics
+      }
+      else {
+        return body.plainLyrics
+      }
     }
     else {
       return body.plainLyrics
