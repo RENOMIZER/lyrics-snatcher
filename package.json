@@ -1,6 +1,6 @@
 {
   "name": "lyrics-snatcher",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Module for getting lyrics using LRCLIB API",
   "main": "index.js",
   "keywords": [
